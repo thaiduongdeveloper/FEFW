@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Nguyễn Văn ",
+      "email": "nodola5968@sectorid.com"
+    },
+    {
+      "id": "2",
+      "name": "Trần Thị B",
+      "email": "nodola5968@sectorid.com"
+    },
+    {
+      "id": "3",
+      "name": "Lê Văn C",
+      "email": "nodola5968@sectorid.com"
+    }
+  ]
+}
