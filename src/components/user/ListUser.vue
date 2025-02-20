@@ -4,7 +4,6 @@ import { ref, onMounted } from "vue";
 import axios from "axios";
 
 const users = ref([]);
-const loading = ref(true);
 const error = ref(null);
 
 const fetchUsers = async () => {
@@ -13,8 +12,6 @@ const fetchUsers = async () => {
     users.value = response.data;
   } catch (err) {
     error.value = "Lỗi khi Call API: " + err.message;
-  } finally {
-    loading.value = false;
   }
 };
 
@@ -50,7 +47,13 @@ onMounted(fetchUsers);
               class="btn btn-info btn-sm me-2"
               >Show</router-link
             >
-            <button class="btn btn-outline-primary btn-sm me-2">Sửa</button>
+            <router-link
+              :to="`/editUser/${user.id}`"
+              class="btn btn-outline-primary btn-sm me-2"
+            >
+              Sửa
+            </router-link>
+
             <button class="btn btn-outline-danger btn-sm">Xóa</button>
           </td>
         </tr>

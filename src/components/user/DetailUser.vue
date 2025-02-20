@@ -6,7 +6,6 @@ import axios from "axios";
 const route = useRoute();
 
 const detailUser = ref({});
-const loading = ref(true);
 const error = ref(null);
 
 const fetchUser = async () => {
@@ -17,8 +16,6 @@ const fetchUser = async () => {
     detailUser.value = response.data;
   } catch (err) {
     error.value = "Lỗi khi Call API: " + err.message;
-  } finally {
-    loading.value = false;
   }
 };
 
@@ -32,17 +29,6 @@ onMounted(fetchUser);
       <router-link to="/users" class="btn btn-secondary btn-lg shadow"
         >⬅ Quay lại</router-link
       >
-    </div>
-
-    <!-- Trạng thái tải dữ liệu -->
-    <div v-if="loading" class="text-center">
-      <div class="spinner-border text-primary" role="status"></div>
-      <p>Đang tải dữ liệu...</p>
-    </div>
-
-    <!-- Hiển thị lỗi nếu có -->
-    <div v-else-if="error" class="alert alert-danger text-center">
-      {{ error }}
     </div>
 
     <!-- Hiển thị thông tin người dùng -->
