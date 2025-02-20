@@ -7,6 +7,7 @@ import Post from "../components/pages/post.vue";
 import Product from "../components/pages/product.vue";
 import ListUser from "../components/user/ListUser.vue";
 import DetailUser from "../components/user/DetailUser.vue";
+import CreateUser from "../components/user/CreateUser.vue";
 
 const routes = [
   { path: "/", component: Home, name: "home" },
@@ -14,7 +15,8 @@ const routes = [
   { path: "/post", component: Post, name: "post" },
   { path: "/product", component: Product, name: "product" },
   { path: "/users", component: ListUser, name: "listUser" },
-  { path: "/users/:id", component: DetailUser, name: "detailUser" }
+  { path: "/users/:id", component: DetailUser, name: "detailUser" },
+  { path: "/createUser", component: CreateUser, name: "createUser" }
 ];
 
 const router = createRouter({

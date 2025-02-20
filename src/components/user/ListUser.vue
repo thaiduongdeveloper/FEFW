@@ -25,7 +25,9 @@ onMounted(fetchUsers);
   <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="text-primary fw-bold">📋 Danh sách người dùng</h1>
-      <button class="btn btn-success btn-lg shadow">Thêm</button>
+      <router-link to="/createUser" class="btn btn-success btn-lg shadow"
+        >Add</router-link
+      >
     </div>
 
     <table class="table table-hover align-middle shadow-sm rounded">

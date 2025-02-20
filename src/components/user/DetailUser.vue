@@ -1,10 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import axios from "axios";
 
 const route = useRoute();
-const router = useRouter();
 
 const detailUser = ref({});
 const loading = ref(true);
@@ -30,12 +29,9 @@ onMounted(fetchUser);
   <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="text-primary fw-bold">👤 Thông tin chi tiết</h1>
-      <button
-        class="btn btn-secondary btn-lg shadow"
-        @click="router.push('/users')"
+      <router-link to="/users" class="btn btn-secondary btn-lg shadow"
+        >⬅ Quay lại</router-link
       >
-        ⬅ Quay lại
-      </button>
     </div>
 
     <!-- Trạng thái tải dữ liệu -->
