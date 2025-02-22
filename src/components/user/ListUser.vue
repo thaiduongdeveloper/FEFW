@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from "vue";
-
 import axios from "axios";
 
 const users = ref([]);
@@ -16,15 +15,31 @@ const fetchUsers = async () => {
 };
 
 onMounted(fetchUsers);
+
+const confirmDelete = async (id) => {
+  if (window.confirm("Xác nhận xóa?")) {
+    await deleteUser(id);
+  }
+};
+
+const deleteUser = async (id) => {
+  try {
+    await axios.delete(`http://localhost:3000/users/${id}`);
+    users.value = users.value.filter((user) => user.id !== id);
+    alert("Xóa thành công");
+  } catch (error) {
+    alert("Lỗi khi xóa người dùng: " + error.message);
+  }
+};
 </script>
 
 <template>
   <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="text-primary fw-bold">📋 Danh sách người dùng</h1>
-      <router-link to="/createUser" class="btn btn-success btn-lg shadow"
-        >Add</router-link
-      >
+      <router-link to="/createUser" class="btn btn-success btn-lg shadow">
+        Add
+      </router-link>
     </div>
 
     <table class="table table-hover align-middle shadow-sm rounded">
@@ -45,16 +60,21 @@ onMounted(fetchUsers);
             <router-link
               :to="`/users/${user.id}`"
               class="btn btn-info btn-sm me-2"
-              >Show</router-link
             >
+              Show
+            </router-link>
             <router-link
               :to="`/editUser/${user.id}`"
               class="btn btn-outline-primary btn-sm me-2"
             >
               Sửa
             </router-link>
-
-            <button class="btn btn-outline-danger btn-sm">Xóa</button>
+            <button
+              @click="confirmDelete(user.id)"
+              class="btn btn-outline-danger btn-sm"
+            >
+              Xóa
+            </button>
           </td>
         </tr>
       </tbody>
